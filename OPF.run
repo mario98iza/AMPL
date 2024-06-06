@@ -1,0 +1,18 @@
+#RUN
+reset;
+
+# Cargar modelo y datos
+model OPF1.mod;
+data OPF.dat;
+
+# Configurar solver
+option solver knitro;
+
+# Resolver el problema de optimización
+solve generacion_slack;
+
+# Verificar y mostrar resultado
+display V,th;
+display Pg,Qg;
+display Pde,Ppa,Qde,Qpa;
+display generacion_slack*Sbase;
